@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>امانت‌های من</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>📖 کتاب‌های امانت گرفته شده</h2>
+            <a href="{% url 'book_list' %}" class="btn btn-secondary">بازگشت به کتابخانه</a>
+        </div>
+
+        <div class="book-grid">
+            {% for borrow in borrowings %}
+                <div class="card">
+                    <h3 class="card-title">{{ borrow.book.title }}</h3>
+                    <p>
+                        تاریخ امانت: {{ borrow.borrow_date }}<br>
+                        موعد بازگشت: {{ borrow.due_date }}<br>
+                        وضعیت:
+                        {% if borrow.is_returned %}
+                            <span class="badge-success">بازگردانده شده</span>
+                        {% else %}
+                            <span class="badge-danger">در دست شما</span>
+                        {% endif %}
+                    </p>
+                </div>
+            {% empty %}
+                <div class="alert-info">شما هنوز هیچ کتابی امانت نگرفته‌اید.</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

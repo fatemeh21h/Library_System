@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت‌نام</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container" style="max-width: 400px; margin-top: 50px;">
+        <div class="header">
+            <h2>📝 ثبت‌نام در کتابخانه</h2>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success" style="width: 100%;">ثبت‌نام</button>
+        </form>
+        <p style="text-align: center; margin-top: 15px;">
+            قبلاً ثبت‌نام کرده‌اید؟ <a href="{% url 'login' %}">وارد شوید</a>
+        </p>
+    </div>
+</body>
+</html>

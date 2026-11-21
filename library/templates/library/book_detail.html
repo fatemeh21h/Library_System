@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>جزئیات کتاب</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container" style="max-width: 600px;">
+        <div class="header">
+            <h2>📖 {{ book.title }}</h2>
+        </div>
+
+        <div class="card" style="padding: 20px; line-height: 2;">
+            <p><strong>نویسنده:</strong> {{ book.author }}</p>
+            <p><strong>ناشر:</strong> {{ book.publisher }}</p>
+            <p><strong>سال انتشار:</strong> {{ book.publish_year }}</p>
+            <p><strong>موضوع:</strong> {{ book.get_genre_display }}</p>
+            <p><strong>تعداد کل نسخه‌ها:</strong> {{ book.total_copies }}</p>
+            <p>
+                <strong>موجودی فعلی:</strong>
+                <span class="{% if book.available_copies > 0 %}badge-success{% else %}badge-danger{% endif %}">
+                    {{ book.available_copies }}
+                </span>
+            </p>
+
+            <div style="margin-top: 20px;">
+                <a href="{% url 'book_list' %}" class="btn btn-secondary">بازگشت به لیست</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

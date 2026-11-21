@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت امانت</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container" style="max-width: 600px;">
+        <div class="header">
+            <h2>📖 ثبت امانت جدید</h2>
+        </div>
+
+        <form method="post" style="padding: 10px;">
+            {% csrf_token %}
+            <!-- فرم به صورت خودکار با استایل‌های style.css رندر می‌شود -->
+            {{ form.as_p }}
+
+            <div style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primary">ثبت امانت</button>
+                <a href="{% url 'book_list' %}" class="btn btn-secondary">انصراف</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

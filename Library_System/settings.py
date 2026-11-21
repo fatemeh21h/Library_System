@@ -128,3 +128,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_REDIRECT_URL = 'book_list'  # بعد از لاگین موفق، کاربر به لیست کتاب‌ها بره
+LOGOUT_REDIRECT_URL = 'book_list' # بعد از خروج، کاربر به لیست کتاب‌ها بره
